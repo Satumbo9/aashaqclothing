@@ -1,7 +1,7 @@
 import React from "react";
 
-const page = () => {
-  return <div>page</div>;
+const Home = () => {
+  return <div className=" bg-red-300   w-full">Home</div>;
 };
 
-export default page;
+export default Home;
