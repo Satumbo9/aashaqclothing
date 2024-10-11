@@ -28,9 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen w-screen xl:flex`}
+        className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen antialiased xl:flex`}
       >
-        <div className="relative size-full flex max-sm:flex-col">
+        <div className="relative flex size-full max-sm:flex-col">
           <SideBar />
           {children}
           <NavDetails />

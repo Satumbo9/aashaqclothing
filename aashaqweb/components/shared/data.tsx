@@ -24,19 +24,19 @@ export const navLinks: navLinksSchema[] = [
     id: nanoid(),
     text: "Coleção",
     route: "/Home",
-    icon: <FaTshirt style={{ fontSize: "45px" }} />,
+    icon: <FaTshirt className={`text-[45px] max-sm:text-[30px]`} />,
   },
   {
     id: nanoid(),
     text: "Produtos",
     route: "/Product",
-    icon: <FaShoppingBag style={{ fontSize: "45px" }} />,
+    icon: <FaShoppingBag className={`text-[45px] max-sm:text-[30px]`} />,
   },
   {
     id: nanoid(),
     text: "Inquerito",
     route: "/Inquiry",
-    icon: <SiMinutemailer style={{ fontSize: "45px" }} />,
+    icon: <SiMinutemailer className={`text-[45px] max-sm:text-[30px]`} />,
   },
 ];
 

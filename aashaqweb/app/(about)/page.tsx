@@ -4,14 +4,10 @@ import Link from "next/link";
 
 const page = () => {
   return (
-    <section className="bg-[--background-primary] h-screen w-full text-white  flex flex-col items-center justify-center gap-10">
-      <article className="flex  items-end text-center justify-center">
+    <section className="flex h-screen w-full flex-col items-center justify-center gap-10 bg-[--background-primary] text-white">
+      <article className="flex items-end justify-center text-center">
         <div className="">
-          <p
-            className="text-9xl  font-bold
-          
-          py-2 transition-color duration-150 ease-out"
-          >
+          <p className="transition-color py-2 text-2xl font-bold duration-150 ease-out">
             Aashaq
           </p>
           {/* <p className="text-3xl">
