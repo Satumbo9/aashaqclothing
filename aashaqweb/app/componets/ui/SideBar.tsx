@@ -16,7 +16,7 @@ const SideBar = () => {
     >
       <Link
         className={`text-3xl font-semibold text-center mt-10  
-        transition-color duration-150 ease-out ${
+        transition-color duration-150 ease-out hover:scale-105 ${
           pathname === "/About" ? "text-red-500" : "hover:text-red-200"
         }`}
         href="/About"
@@ -29,7 +29,7 @@ const SideBar = () => {
             <Link
               className={`text-2xl flex flex-col items-center gap-5
               border-b-2 border-[#1d1d1d] cursor-pointer
-                py-2 transition-color duration-150 ease-out
+                py-2 transition-color duration-150 ease-out hover:scale-105
                ${
                  pathname === item.route
                    ? "text-red-500 "
