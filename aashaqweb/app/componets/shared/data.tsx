@@ -1,25 +1,62 @@
 import { nanoid } from "nanoid";
-import { FaTshirt, FaHandsHelping, FaShippingFast } from "react-icons/fa";
+import React from "react";
+import {
+  FaTshirt,
+  FaHandsHelping,
+  FaHeart,
+  FaShoppingBag,
+  FaInstagram,
+  FaYoutube,
+  FaTiktok,
+} from "react-icons/fa";
 
-import { IoMdChatboxes } from "react-icons/io";
+import { SiMinutemailer } from "react-icons/si";
 
-export const navLinks = [
+interface navLinksSchema {
+  id: string;
+  text: string;
+  route: string;
+  icon: React.ReactElement;
+}
+
+export const navLinks: navLinksSchema[] = [
   {
     id: nanoid(),
     text: "Coleção",
     route: "/Home",
-    icon: <FaTshirt style={{ fontSize: "50px" }} />,
+    icon: <FaTshirt style={{ fontSize: "45px" }} />,
   },
   {
     id: nanoid(),
-    text: "Missão",
-    route: "/Mission",
-    icon: <FaHandsHelping style={{ fontSize: "50px" }} />,
+    text: "Produtos",
+    route: "/Product",
+    icon: <FaShoppingBag style={{ fontSize: "45px" }} />,
   },
   {
     id: nanoid(),
     text: "Inquerito",
     route: "/Inquiry",
-    icon: <IoMdChatboxes style={{ fontSize: "50px" }} />,
+    icon: <SiMinutemailer style={{ fontSize: "45px" }} />,
+  },
+];
+
+export const aboutLinks = [
+  {
+    id: nanoid(),
+    text: "Instagram",
+    href: "#",
+    icon: <FaInstagram style={{ fontSize: "45px" }} />,
+  },
+  {
+    id: nanoid(),
+    text: "Tiktok",
+    href: "#",
+    icon: <FaTiktok style={{ fontSize: "45px" }} />,
+  },
+  {
+    id: nanoid(),
+    text: "Youtube",
+    href: "#",
+    icon: <FaYoutube style={{ fontSize: "45px" }} />,
   },
 ];
