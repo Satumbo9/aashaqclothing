@@ -1,5 +1,5 @@
 import React from "react";
-import { aboutLinks } from "../componets/shared/data";
+import { aboutLinks } from "../../components/shared/data";
 import Link from "next/link";
 
 const page = () => {
