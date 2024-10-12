@@ -27,31 +27,14 @@ const page = () => {
   const speed = 0.01;
 
   useEffect(() => {
+    //GSAP for the mouse cirlcle mask effect
     if (logoTextRef.current) {
       //Spliting the Full Text
       const splitText = new SplitType(logoTextRef.current, {
         types: "words,chars",
       });
 
-      //Checkig A Text
-      const hasA = splitText.chars?.some(
-        (char: HTMLElement) => char.textContent === "A",
-      );
-
-      gsap.timeline({ defaults: { ease: "power2.in" } });
-      console.log(splitText);
-
-      gsap.to(splitText.chars, {
-        // scale: 2,
-        // repeat: 0,
-        // duration: 1,
-
-        // stagger: {
-        //   each: 0.5,
-        // },
-
-        ease: "elastic.out(1,0.3)",
-      });
+      gsap.to(splitText.chars, {});
 
       return () => {
         splitText.revert();
@@ -59,6 +42,7 @@ const page = () => {
     }
   });
 
+  //Animation for the icons aroud
   const MouseMovePlane = (e: MouseEvent) => {
     const { movementX, movementY } = e;
     xForce += movementX * speed;
@@ -98,39 +82,17 @@ const page = () => {
   return (
     <section
       onMouseMove={(e) => MouseMovePlane(e)}
-      className="relative flex h-screen w-full flex-col items-center justify-center gap-10 bg-[--background-primary] text-white"
+      className="relative flex size-full h-screen w-full flex-col items-center justify-center gap-10 bg-[--background-primary] text-white"
     >
       <div ref={logoTextRef} className="z-10">
         <p className="text-9xl font-bold max-sm:text-xl">Aashaq</p>
       </div>
 
       <div ref={PlaneRef1} className="absolute size-full max-sm:hidden">
-        <Image
-          className="absolute left-[56%] right-[50%] top-[4%] opacity-35"
-          width={300}
-          src={Img2}
-          alt="img2"
-        />
-        <Image
-          className="absolute left-[30%] top-[40%] opacity-35"
-          width={300}
-          src={Img3}
-          alt="img3"
-        />
-        <Image
-          className="absolute left-[40%] top-[20%] z-50 opacity-35"
-          width={300}
-          src={Img5}
-          alt="img5"
-        />
+        {/* First Plane */}
       </div>
       <div ref={PlaneRef2} className="absolute size-full max-sm:hidden">
-        <Image
-          className="absolute left-[15%] top-[60%] z-20 opacity-35"
-          width={400}
-          src={Img4}
-          alt="img4"
-        />
+        {/* Second Plane */}
       </div>
     </section>
   );

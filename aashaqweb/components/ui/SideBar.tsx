@@ -11,20 +11,20 @@ const SideBar = () => {
   console.log(pathname);
   return (
     <React.Fragment>
-      <header className="flex h-screen w-[200px] flex-col items-center gap-y-48 border-r-2 border-[#1d1d1d] bg-[--background-primary] px-5 text-white max-sm:hidden">
+      <header className="flex h-screen w-[200px] flex-col items-center gap-y-36 border-r-2 border-[#1d1d1d] bg-[--background-primary] text-white max-sm:hidden">
         <Link
-          className={`transition-color mt-10 flex items-center text-center text-3xl font-bold duration-150 ease-out ${
+          className={`transition-color mt-10 flex w-fit items-center text-center text-3xl font-bold duration-150 ease-out ${
             pathname === "/" ? "text-red-500" : "hover:text-red-200"
           }`}
           href="/"
         >
           AASHAQ
         </Link>
-        <ul className="flex flex-col gap-24 text-center">
+        <ul className="flex flex-col gap-10 text-center">
           {navLinks.map((item) => (
             <li key={item.id} className="">
               <Link
-                className={`transition-color flex cursor-pointer flex-col items-center gap-5 border-b-2 border-[#1d1d1d] py-2 text-2xl duration-150 ease-out hover:scale-105 ${
+                className={`transition-color flex h-40 w-40 cursor-pointer flex-col items-center gap-5 border-b-2 border-[#1d1d1d] py-2 text-2xl duration-150 ease-out hover:scale-105 ${
                   pathname === item.route
                     ? "text-red-500"
                     : "hover:text-red-200"

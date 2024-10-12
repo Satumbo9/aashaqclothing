@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen antialiased xl:flex`}
+        className={`${geistSans.variable} ${geistMono.variable} size-full antialiased xl:flex`}
       >
         <Cursor>
           <div className="relative flex size-full max-sm:flex-col">
