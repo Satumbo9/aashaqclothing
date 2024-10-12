@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { navLinks } from "../shared/data";
-import { TbBrightnessHalf } from "react-icons/tb";
+// import { TbBrightnessHalf } from "react-icons/tb";
 import { usePathname } from "next/navigation";
 
 import Link from "next/link";

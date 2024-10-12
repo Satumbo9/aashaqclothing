@@ -1,7 +1,13 @@
 import React from "react";
+import Forms from "@/components/ui/Forms";
 
-const page = () => {
-  return <div className=" bg-yellow-300 w-full h-screen">Inquery</div>;
+const Orders = () => {
+  return (
+    <div className="h-screen w-full bg-yellow-300">
+      Orders
+      <Forms name="Orders" />
+    </div>
+  );
 };
 
-export default page;
+export default Orders;

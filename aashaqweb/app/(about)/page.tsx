@@ -16,7 +16,7 @@ import { gsap, ScrollTrigger, Flip, Draggable } from "gsap/all"; // Calling all 
 import SplitType from "split-type";
 import Image from "next/image";
 
-const page = () => {
+const About = () => {
   const logoTextRef = useRef(null);
   const PlaneRef1 = useRef(null);
   const PlaneRef2 = useRef(null);
@@ -98,4 +98,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default About;

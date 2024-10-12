@@ -4,7 +4,9 @@ import "./globals.css";
 import SideBar from "@/components/ui/SideBar";
 import NavDetails from "../components/ui/NavDetails";
 import Cursor from "@/components/ui/Cursor";
-
+import Home from "./Home/page";
+import About from "./(about)/page";
+import Orders from "./Orders/page";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -29,15 +31,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        style={{
+          animationDelay: `${0.05}`,
+          animationDuration: "1s",
+        }}
         className={`${geistSans.variable} ${geistMono.variable} size-full antialiased xl:flex`}
       >
-        <Cursor>
+        {/* <Cursor>
           <div className="relative flex size-full max-sm:flex-col">
             <SideBar />
             {children}
-            {/* <NavDetails /> */}
           </div>
-        </Cursor>
+        </Cursor> */}
+
+        <Orders />
       </body>
     </html>
   );

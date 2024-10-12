@@ -6,11 +6,10 @@ import { gsap, ScrollTrigger } from "gsap/all";
 
 const Cursor = ({ children }: { children: React.ReactNode }) => {
   const cursorRef = useRef<HTMLDivElement>(null);
-  const [isOver, setisOver] = useState<boolean>(false);
-  const [isMouseMoved, setisMouseMoved] = useState<boolean>(false);
+
   const cursorSize = 40;
   const mousePos = useRef({ x: 0, y: 0 });
-  const offset = 10;
+  // const offset = 10;
 
   const updateCursorPosition = () => {
     if (cursorRef.current) {
@@ -36,7 +35,6 @@ const Cursor = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       mousePos.current = { x: e.pageX, y: e.pageY };
-      setisMouseMoved(true);
     };
 
     const animate = () => {
@@ -45,6 +43,7 @@ const Cursor = ({ children }: { children: React.ReactNode }) => {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
+
     requestAnimationFrame(animate);
 
     return () => {
@@ -59,6 +58,7 @@ const Cursor = ({ children }: { children: React.ReactNode }) => {
         //left-1/2 top-1/2 z-30 h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform
         className={`pointer-events-none fixed z-30 h-10 w-10 rounded-full bg-red-500 mix-blend-difference max-sm:hidden`}
       ></div>
+
       {children}
     </div>
   );
