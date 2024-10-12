@@ -46,7 +46,7 @@ const Cursor = ({ children }: { children: React.ReactNode }) => {
     <div className="size-full">
       <div
         ref={cursorRef}
-        className="pointer-events-none fixed z-10 z-30 h-10 w-10 origin-center rounded-full bg-red-500 mix-blend-difference transition duration-75 ease-in"
+        className="pointer-events-none fixed z-30 h-10 w-10 origin-center rounded-full bg-red-500 mix-blend-difference transition duration-75 ease-in max-sm:hidden"
       ></div>
       {children}
     </div>

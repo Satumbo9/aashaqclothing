@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { MouseEvent, useEffect } from "react";
 import { aboutLinks } from "../../components/shared/data";
 import { useState, useRef } from "react";
 import {
@@ -18,6 +18,13 @@ import Image from "next/image";
 
 const page = () => {
   const logoTextRef = useRef(null);
+  const PlaneRef1 = useRef(null);
+  const PlaneRef2 = useRef(null);
+  let requestAnimationFrameId: any = null;
+  let xForce = 0;
+  let yForce = 0;
+  const easing = 0.08;
+  const speed = 0.01;
 
   useEffect(() => {
     if (logoTextRef.current) {
@@ -51,13 +58,53 @@ const page = () => {
       };
     }
   });
+
+  const MouseMovePlane = (e: MouseEvent) => {
+    const { movementX, movementY } = e;
+    xForce += movementX * speed;
+    yForce += movementY * speed;
+
+    if (requestAnimationFrameId == null) {
+      requestAnimationFrameId = requestAnimationFrame(animate);
+    }
+  };
+
+  const lerp = (start: number, target: number, amount: number) =>
+    start * (1 - amount) + target * amount;
+
+  const animate = () => {
+    xForce = lerp(xForce, 0, easing);
+    yForce = lerp(yForce, 0, easing);
+    gsap.set(PlaneRef1.current, {
+      x: `+=${xForce}`,
+      y: `+=${yForce}`,
+    });
+    gsap.set(PlaneRef2.current, {
+      x: `+=${xForce * 0.5}`,
+      y: `+=${yForce * 0.5}`,
+    });
+
+    if (Math.abs(xForce) < 0.01) xForce = 0;
+    if (Math.abs(yForce) < 0.01) yForce = 0;
+
+    if (xForce != 0 || yForce != 0) {
+      requestAnimationFrame(animate);
+    } else {
+      cancelAnimationFrame(requestAnimationFrameId);
+      requestAnimationFrameId = null;
+    }
+  };
+
   return (
-    <section className="relative flex h-screen w-full flex-col items-center justify-center gap-10 bg-[--background-primary] text-white">
+    <section
+      onMouseMove={(e) => MouseMovePlane(e)}
+      className="relative flex h-screen w-full flex-col items-center justify-center gap-10 bg-[--background-primary] text-white"
+    >
       <div ref={logoTextRef} className="z-10">
-        <p className="text-9xl font-bold">Aashaq</p>
+        <p className="text-9xl font-bold max-sm:text-xl">Aashaq</p>
       </div>
 
-      <div className="absolute size-full">
+      <div ref={PlaneRef1} className="absolute size-full max-sm:hidden">
         <Image
           className="absolute left-[56%] right-[50%] top-[4%] opacity-35"
           width={300}
@@ -70,19 +117,19 @@ const page = () => {
           src={Img3}
           alt="img3"
         />
-      </div>
-      <div className="absolute size-full">
         <Image
-          className="absolute left-[15%] top-[60%] opacity-35"
-          width={400}
-          src={Img4}
-          alt="img4"
-        />
-        <Image
-          className="absolute left-[40%] top-[20%] opacity-35"
+          className="absolute left-[40%] top-[20%] z-50 opacity-35"
           width={300}
           src={Img5}
           alt="img5"
+        />
+      </div>
+      <div ref={PlaneRef2} className="absolute size-full max-sm:hidden">
+        <Image
+          className="absolute left-[15%] top-[60%] z-20 opacity-35"
+          width={400}
+          src={Img4}
+          alt="img4"
         />
       </div>
     </section>
