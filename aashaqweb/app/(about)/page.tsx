@@ -3,12 +3,18 @@
 import React, { useEffect } from "react";
 import { aboutLinks } from "../../components/shared/data";
 import { useState, useRef } from "react";
+import {
+  Img1,
+  Img2,
+  Img3,
+  Img4,
+  Img5,
+  Img6,
+} from "../../components/img/images";
 import { gsap, ScrollTrigger, Flip, Draggable } from "gsap/all"; // Calling all the plugins
 
 import SplitType from "split-type";
-import Link from "next/link";
-import { log } from "console";
-import { split } from "postcss/lib/list";
+import Image from "next/image";
 
 const page = () => {
   const logoTextRef = useRef(null);
@@ -29,21 +35,15 @@ const page = () => {
       console.log(splitText);
 
       gsap.to(splitText.chars, {
-        scale: 2,
-        repeat: -1,
-        duration: 2,
+        // scale: 2,
+        // repeat: 0,
+        // duration: 1,
 
-        delay: 0.1,
-        stagger: {
-          each: 0.5,
-        },
-        yoyo: true,
+        // stagger: {
+        //   each: 0.5,
+        // },
 
         ease: "elastic.out(1,0.3)",
-      });
-
-      gsap.from(splitText.chars, {
-        opacity: 0,
       });
 
       return () => {
@@ -52,11 +52,38 @@ const page = () => {
     }
   });
   return (
-    <section className="flex h-screen w-full flex-col items-center justify-center gap-10 bg-[--background-primary] text-white">
-      <div className="flex items-end justify-center text-center">
-        <div ref={logoTextRef} className="">
-          <p className="text-9xl font-bold">Aashaq</p>
-        </div>
+    <section className="relative flex h-screen w-full flex-col items-center justify-center gap-10 bg-[--background-primary] text-white">
+      <div ref={logoTextRef} className="z-10">
+        <p className="text-9xl font-bold">Aashaq</p>
+      </div>
+
+      <div className="absolute size-full">
+        <Image
+          className="absolute left-[56%] right-[50%] top-[4%] opacity-35"
+          width={300}
+          src={Img2}
+          alt="img2"
+        />
+        <Image
+          className="absolute left-[30%] top-[40%] opacity-35"
+          width={300}
+          src={Img3}
+          alt="img3"
+        />
+      </div>
+      <div className="absolute size-full">
+        <Image
+          className="absolute left-[15%] top-[60%] opacity-35"
+          width={400}
+          src={Img4}
+          alt="img4"
+        />
+        <Image
+          className="absolute left-[40%] top-[20%] opacity-35"
+          width={300}
+          src={Img5}
+          alt="img5"
+        />
       </div>
     </section>
   );

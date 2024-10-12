@@ -14,35 +14,39 @@ const Cursor = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const updateCursorPosition = (e: MouseEvent) => {
       if (cursorRef.current) {
-        gsap.to(cursorRef.current, 0.016, {
-          repeat: -1,
-          x: e.clientX - 20,
-          y: e.clientY - 20,
-          duration: 5,
+        gsap.to(cursorRef.current, {
+          x: e.pageX - 20,
+          y: e.pageY - 20,
+          duration: 0.1,
           ease: "power2",
-        });
-        gsap.from(cursorRef.current, {
-          repeat: -1,
-          x: e.clientX - 20,
-          y: e.clientY - 20,
-          duration: 0,
-          ease: "power2",
-          opacity: 0,
         });
       }
     };
 
+    //     const setInitialPosition = (e: MouseEvent) => {
+    //       if (cursorRef.current) {
+    //         gsap.set(cursorRef.current, {
+    //           x: e.clientX,
+    //           y: e.clientY,
+    //         });
+    //       }
+    //     };
+    //     window.addEventListener("mousemove", setInitialPosition);
+    //     const mouseMoveHandler = (e: MouseEvent) => {
+    //       updateCursorPosition(e);
+    //     };
     window.addEventListener("mousemove", updateCursorPosition);
 
     return () => {
       window.removeEventListener("mousemove", updateCursorPosition);
+      //       window.removeEventListener("mousemove", mouseMoveHandler);
     };
   }, []);
   return (
     <div className="size-full">
       <div
         ref={cursorRef}
-        className="pointer-events-none fixed z-10 h-10 w-10 origin-center rounded-full bg-red-500 transition duration-75 ease-in"
+        className="pointer-events-none fixed z-10 z-30 h-10 w-10 origin-center rounded-full bg-red-500 mix-blend-difference transition duration-75 ease-in"
       ></div>
       {children}
     </div>

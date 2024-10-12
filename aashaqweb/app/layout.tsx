@@ -35,7 +35,7 @@ export default function RootLayout({
           <div className="relative flex size-full max-sm:flex-col">
             <SideBar />
             {children}
-            <NavDetails />
+            {/* <NavDetails /> */}
           </div>
         </Cursor>
       </body>

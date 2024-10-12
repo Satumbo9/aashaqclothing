@@ -19,6 +19,17 @@ interface navLinksSchema {
   icon: React.ReactElement;
 }
 
+interface aboutImagesSchema {
+  id: string;
+  url: string;
+}
+
+export const aboutImages: aboutImagesSchema[] = [
+  {
+    id: nanoid(),
+    url: "",
+  },
+];
 export const navLinks: navLinksSchema[] = [
   {
     id: nanoid(),
@@ -34,8 +45,8 @@ export const navLinks: navLinksSchema[] = [
   },
   {
     id: nanoid(),
-    text: "Inquerito",
-    route: "/Inquiry",
+    text: "Ecomendas",
+    route: "/Orders",
     icon: <SiMinutemailer className={`text-[45px] max-sm:text-[30px]`} />,
   },
 ];
