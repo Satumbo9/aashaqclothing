@@ -9,7 +9,11 @@ const FormData: React.FC<FromComponentProps> = ({
   children,
   ...props
 }) => {
-  return <form name="Orders">{children}</form>;
+  return (
+    <form name="Orders" {...props}>
+      {children}
+    </form>
+  );
 };
 
 export default FormData;

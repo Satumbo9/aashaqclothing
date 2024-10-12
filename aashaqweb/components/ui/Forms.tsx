@@ -5,6 +5,8 @@ import { useForm, SubmitErrorHandler, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Buttom from "./Buttom";
+import InputForm from "./InputForm";
 
 //Schemas
 const OrderSchema = z.object({
@@ -39,10 +41,29 @@ export const Orders = () => {
     console.log("Orders Submitted", data);
   };
   return (
-    <div>
-      <FormData name="name" onSubmit={handleSubmit(onSubmit)}>
-        <p className="text-9xl"> I am Order</p>
-      </FormData>
+    <div className="flex size-full flex-col items-center">
+      <div className="mt-[180px] flex items-center justify-center">
+        <p className="text-9xl"> Orders</p>
+        <FormData
+          className="mt-[100px] flex w-[600px] flex-col items-center justify-center gap-5"
+          name="name"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <InputForm placeholder="Name" label="Name" id="name" type="text" />
+          <InputForm placeholder="Email" label="Email" id="email" type="text" />
+          <InputForm
+            placeholder="+908-000-000"
+            label="Phone"
+            id="email"
+            type="text"
+          />
+          <Buttom
+            type="submit"
+            className="h-10 w-[300px] bg-red-500"
+            label="Submmit"
+          />
+        </FormData>
+      </div>
     </div>
   );
 };
@@ -64,7 +85,7 @@ export const NewsLetter = () => {
     console.log("News Letter Submitted", data);
   };
   return (
-    <div>
+    <div className="">
       <FormData name="name" onSubmit={handleSubmit(onSubmit)}>
         <p className="text-9xl"> I am NewsLetter</p>
       </FormData>
