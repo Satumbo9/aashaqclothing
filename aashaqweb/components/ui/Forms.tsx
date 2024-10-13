@@ -78,12 +78,21 @@ export const Orders = () => {
             <div className="flex gap-20 font-bold">
               {steps.map((item, index) => {
                 return (
-                  <p
-                    className={`text-4xl ${index === CurrentStep ? "flex h-10 w-10 items-center justify-center rounded-full bg-red-500 text-white" : null}`}
-                    key={item.id}
+                  <div
+                    className={`flex flex-col items-center justify-center gap-2`}
                   >
-                    {item.id}
-                  </p>
+                    <p
+                      className={`text-4xl ${index === CurrentStep ? "flex h-10 w-10 items-center justify-center rounded-full bg-red-500 text-white" : null}`}
+                      key={item.id}
+                    >
+                      {item.id}
+                    </p>
+                    <p
+                      className={`${index === CurrentStep ? "text-red-500" : null} `}
+                    >
+                      {item.text}
+                    </p>
+                  </div>
                 );
               })}
             </div>
