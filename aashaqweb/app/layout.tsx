@@ -44,7 +44,7 @@ export default function RootLayout({
           </div>
         </Cursor>
 
-        {/* <Orders /> */}
+        {/* <About /> */}
       </body>
     </html>
   );

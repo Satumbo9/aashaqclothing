@@ -12,7 +12,8 @@ import {
   Img6,
 } from "../../components/img/images";
 import { gsap, ScrollTrigger, Flip, Draggable } from "gsap/all"; // Calling all the plugins
-
+import InputForm from "@/components/ui/InputForm";
+import Buttom from "@/components/ui/Buttom";
 import SplitType from "split-type";
 import Image from "next/image";
 
@@ -82,20 +83,34 @@ const About = () => {
   return (
     <section
       onMouseMove={(e) => MouseMovePlane(e)}
-      className="relative flex size-full h-screen w-full flex-col items-center justify-center gap-10 bg-[--background-primary] text-white"
+      className="relative flex h-screen w-screen flex-col items-center justify-center gap-10 bg-[--background-primary] text-white"
     >
-      <div ref={logoTextRef} className="z-10">
+      <div className="z-10 flex w-2/4 flex-col items-center justify-center text-center">
         <p className="text-9xl font-bold max-sm:text-xl">Aashaq</p>
-      </div>
 
-      <div ref={PlaneRef1} className="absolute size-full max-sm:hidden">
-        {/* First Plane */}
-      </div>
-      <div ref={PlaneRef2} className="absolute size-full max-sm:hidden">
-        {/* Second Plane */}
+        <div className="mt-10 flex w-[600px] gap-5">
+          <InputForm
+            className="w-[200px]"
+            id="news"
+            placeholder="Recieve our latest update..."
+            label="News Letter"
+          />
+          <Buttom
+            type="button"
+            className="rounded-md bg-red-500 px-2 font-bold"
+            label="News letter "
+          />
+        </div>
       </div>
     </section>
   );
 };
 
 export default About;
+
+// <div ref={PlaneRef1} className="absolute size-full max-sm:hidden">
+//   {/* First Plane */}
+// </div>
+// <div ref={PlaneRef2} className="absolute size-full max-sm:hidden">
+//   {/* Second Plane */}
+// </div>

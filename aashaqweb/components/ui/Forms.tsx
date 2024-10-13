@@ -7,6 +7,10 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Buttom from "./Buttom";
 import InputForm from "./InputForm";
+import { MdLocalShipping } from "react-icons/md";
+import Image from "next/image";
+import shop1 from "../img/shop1.svg";
+import shop2 from "../img/shop2.svg";
 
 //Schemas
 const OrderSchema = z.object({
@@ -42,13 +46,22 @@ export const Orders = () => {
   };
   return (
     <div className="flex size-full flex-col items-center">
-      <div className="mt-[180px] flex items-center justify-center">
-        <p className="text-9xl"> Orders</p>
+      <div className="mt-[80px] flex items-center justify-center gap-6">
+        <div className="h-2/4">
+          {/* <p className="text-9xl"> Orders</p> */}
+          <Image src={shop1} alt="shop now" width={800} />
+        </div>
         <FormData
-          className="mt-[100px] flex w-[600px] flex-col items-center justify-center gap-5"
+          className="mt-[100px] flex h-[500px] w-[600px] flex-col items-center justify-center gap-10"
           name="name"
           onSubmit={handleSubmit(onSubmit)}
         >
+          <div className="flex flex-col items-center justify-center">
+            <MdLocalShipping className="h-20 w-20 text-white" />
+            <p className="text-xl font-bold">
+              Order Now and Enjoy Hassle-Free Delivery Right to Your Door!
+            </p>
+          </div>
           <InputForm placeholder="Name" label="Name" id="name" type="text" />
           <InputForm placeholder="Email" label="Email" id="email" type="text" />
           <InputForm
@@ -59,7 +72,7 @@ export const Orders = () => {
           />
           <Buttom
             type="submit"
-            className="h-10 w-[300px] bg-red-500"
+            className="h-10 w-[300px] rounded-md bg-red-500 font-bold"
             label="Submmit"
           />
         </FormData>

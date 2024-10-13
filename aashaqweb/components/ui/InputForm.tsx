@@ -19,7 +19,7 @@ const InputForm = React.forwardRef<HTMLInputElement, FieldValues>(
         </div> */}
         <div className="w-[400px]">
           <input
-            className={`h-[40px] w-[400px] px-5 py-1 text-2xl ${className}`}
+            className={`h-[40px] w-[400px] rounded-md px-5 py-1 text-2xl text-black ${className}`}
             type={type}
             placeholder={placeholder}
             id={id}
