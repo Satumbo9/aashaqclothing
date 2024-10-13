@@ -43,8 +43,8 @@ export default function RootLayout({
             {children}
           </div>
         </Cursor>
-
-        {/* <About /> */}
+        {/* 
+        <About /> */}
       </body>
     </html>
   );

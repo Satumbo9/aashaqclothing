@@ -16,6 +16,11 @@ import InputForm from "@/components/ui/InputForm";
 import Buttom from "@/components/ui/Buttom";
 import SplitType from "split-type";
 import Image from "next/image";
+import { CiShirt } from "react-icons/ci";
+import { FaHeart, FaPeace } from "react-icons/fa6";
+import { BiSolidPlaneAlt } from "react-icons/bi";
+import { FaEarthAfrica } from "react-icons/fa6";
+import { CgGym } from "react-icons/cg";
 
 const About = () => {
   const logoTextRef = useRef(null);
@@ -25,7 +30,7 @@ const About = () => {
   let xForce = 0;
   let yForce = 0;
   const easing = 0.08;
-  const speed = 0.01;
+  const speed = 0.003;
 
   useEffect(() => {
     //GSAP for the mouse cirlcle mask effect
@@ -83,34 +88,41 @@ const About = () => {
   return (
     <section
       onMouseMove={(e) => MouseMovePlane(e)}
-      className="relative flex h-screen w-screen flex-col items-center justify-center gap-10 bg-[--background-primary] text-white"
+      className="max-h[100vh] relative flex h-screen w-screen max-w-[100%] flex-col items-center justify-center gap-10 bg-[--background-primary] text-white"
     >
-      <div className="z-10 flex w-2/4 flex-col items-center justify-center text-center">
-        <p className="text-9xl font-bold max-sm:text-xl">Aashaq</p>
-
-        <div className="mt-10 flex w-[600px] gap-5">
-          <InputForm
-            className="w-[200px]"
-            id="news"
-            placeholder="Recieve our latest update..."
-            label="News Letter"
-          />
-          <Buttom
-            type="button"
-            className="rounded-md bg-red-500 px-2 font-bold"
-            label="News letter "
-          />
+      <div ref={PlaneRef1} className="absolute h-screen w-screen max-sm:hidden">
+        <div className="absolute right-[80%] top-[70%] flex h-40 w-40 flex-col items-center justify-center">
+          Passion
+          <CiShirt className="h-32 w-32 text-white" />
         </div>
+        <div className="absolute right-[50%] top-[5%] flex h-20 w-20 flex-col items-center">
+          Love
+          <FaHeart className="h-full w-full text-red-500" />
+        </div>
+        <div className="absolute right-[10%] top-[10%] flex h-40 w-40 flex-col items-center justify-center">
+          Peace
+          <FaPeace className="h-full w-full text-yellow-500" />
+        </div>
+      </div>
+      <div ref={PlaneRef2} className="absolute size-full max-sm:hidden">
+        <div className="absolute right-[45%] top-[70%] flex h-32 w-32 flex-col items-center justify-center">
+          Your favorite spot
+          <BiSolidPlaneAlt className="h-full w-full text-sky-500" />
+        </div>
+        <div className="absolute right-[75%] top-[30%] flex h-40 w-40 flex-col items-center justify-center">
+          Existence
+          <FaEarthAfrica className="h-full w-full text-pink-500" />
+        </div>
+        <div className="absolute right-[10%] top-[65%] h-40 w-40 flex-col items-center justify-center">
+          Health
+          <CgGym className="h-full w-full text-pink-500" />
+        </div>
+      </div>
+      <div className="z-10 flex w-2/4 flex-col items-center justify-center gap-1 text-center">
+        <p className="z-10 text-9xl font-bold max-sm:text-xl">Aashaq</p>
       </div>
     </section>
   );
 };
 
 export default About;
-
-// <div ref={PlaneRef1} className="absolute size-full max-sm:hidden">
-//   {/* First Plane */}
-// </div>
-// <div ref={PlaneRef2} className="absolute size-full max-sm:hidden">
-//   {/* Second Plane */}
-// </div>

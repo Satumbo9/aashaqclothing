@@ -11,7 +11,7 @@ const SideBar = () => {
   console.log(pathname);
   return (
     <React.Fragment>
-      <header className="flex h-screen w-[200px] flex-col items-center gap-y-36 border-r-2 border-[#1d1d1d] bg-[--background-primary] text-white max-sm:hidden">
+      <header className="z-20 flex h-screen w-[200px] flex-col items-center gap-y-36 border-r-2 border-[#1d1d1d] bg-[--background-primary] text-white max-sm:hidden">
         <Link
           className={`transition-color mt-10 flex w-fit items-center text-center text-3xl font-bold duration-150 ease-out ${
             pathname === "/" ? "text-red-500" : "hover:text-red-200"

@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Buttom from "./Buttom";
 import InputForm from "./InputForm";
 import { MdLocalShipping } from "react-icons/md";
+import { nanoid } from "nanoid";
 import Image from "next/image";
 import shop1 from "../img/shop1.svg";
 import shop2 from "../img/shop2.svg";
@@ -35,6 +36,22 @@ export const Orders = () => {
     resolver: zodResolver(OrderSchema),
   });
 
+  const [CurrentStep, setCurrentStep] = useState(0);
+  const steps = [
+    {
+      text: "Personal Info",
+      id: 1,
+    },
+    {
+      text: "Address",
+      id: 2,
+    },
+    {
+      text: "Submmit",
+      id: 3,
+    },
+  ];
+
   const {
     register,
     handleSubmit,
@@ -44,37 +61,109 @@ export const Orders = () => {
   const onSubmit: SubmitHandler<OrdersFormDataType> = (data) => {
     console.log("Orders Submitted", data);
   };
+
   return (
     <div className="flex size-full flex-col items-center">
       <div className="mt-[80px] flex items-center justify-center gap-6">
-        <div className="h-2/4">
-          {/* <p className="text-9xl"> Orders</p> */}
-          <Image src={shop1} alt="shop now" width={800} />
-        </div>
         <FormData
           className="mt-[100px] flex h-[500px] w-[600px] flex-col items-center justify-center gap-10"
           name="name"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center gap-10">
             <MdLocalShipping className="h-20 w-20 text-white" />
-            <p className="text-xl font-bold">
+            <p className="text-xl font-semibold">
               Order Now and Enjoy Hassle-Free Delivery Right to Your Door!
             </p>
+            <div className="flex gap-20 font-bold">
+              {steps.map((item, index) => {
+                return (
+                  <p
+                    className={`text-4xl ${index === CurrentStep ? "flex h-10 w-10 items-center justify-center rounded-full bg-red-500 text-white" : null}`}
+                    key={item.id}
+                  >
+                    {item.id}
+                  </p>
+                );
+              })}
+            </div>
           </div>
-          <InputForm placeholder="Name" label="Name" id="name" type="text" />
-          <InputForm placeholder="Email" label="Email" id="email" type="text" />
-          <InputForm
-            placeholder="+908-000-000"
-            label="Phone"
-            id="email"
-            type="text"
-          />
-          <Buttom
-            type="submit"
-            className="h-10 w-[300px] rounded-md bg-red-500 font-bold"
-            label="Submmit"
-          />
+          {CurrentStep === 0 && (
+            <div className="flex flex-col items-center justify-center gap-6">
+              <InputForm
+                placeholder="First Name"
+                label="Name"
+                id="name"
+                type="text"
+              />
+              <InputForm
+                placeholder="Last Name"
+                label="Name"
+                id="name"
+                type="text"
+              />
+              <InputForm
+                placeholder="Email"
+                label="Email"
+                id="email"
+                type="text"
+              />
+              <InputForm
+                placeholder="+908-000-000"
+                label="Phone"
+                id="phone"
+                type="text"
+              />
+              <Buttom
+                type="button"
+                onClick={() => setCurrentStep((prev) => prev + 1)}
+                className="h-20 w-[300px] bg-red-500 hover:bg-red-400"
+                label="Next Step"
+              />
+            </div>
+          )}
+
+          {CurrentStep === 1 && (
+            <div className="flex flex-col items-center justify-center gap-6">
+              <InputForm
+                placeholder="Address"
+                label="Address"
+                id="address"
+                type="text"
+              />
+              <InputForm
+                placeholder="Zip Code"
+                label="Zip Code"
+                id="zipcode"
+                type="text"
+              />
+              <div className="flex gap-5">
+                <Buttom
+                  type="button"
+                  onClick={() => setCurrentStep((prev) => prev - 1)}
+                  className="h-20 w-[300px] bg-red-500 hover:bg-red-400"
+                  label="Back"
+                />
+                <Buttom
+                  type="button"
+                  onClick={() => {
+                    setTimeout(() => {
+                      console.log("Submmited");
+                      setCurrentStep(0);
+                    }, 1000);
+                    setCurrentStep((prev) => prev + 1);
+                  }}
+                  className="h-20 w-[300px] bg-green-500 hover:bg-green-400"
+                  label="Submmit"
+                />
+              </div>
+            </div>
+          )}
+          {CurrentStep === 2 && (
+            <div>
+              <p className="mt-10 text-9xl">Thank</p>
+            </div>
+          )}
         </FormData>
       </div>
     </div>

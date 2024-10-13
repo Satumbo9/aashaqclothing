@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 
 import { SiMinutemailer } from "react-icons/si";
+import { HiMiniShoppingCart } from "react-icons/hi2";
 
 interface navLinksSchema {
   id: string;
@@ -41,7 +42,7 @@ export const navLinks: navLinksSchema[] = [
     id: nanoid(),
     text: "Produtos",
     route: "/Product",
-    icon: <FaShoppingBag className={`text-[45px] max-sm:text-[30px]`} />,
+    icon: <HiMiniShoppingCart className={`text-[45px] max-sm:text-[30px]`} />,
   },
   {
     id: nanoid(),
