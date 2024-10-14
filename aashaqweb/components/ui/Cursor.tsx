@@ -3,6 +3,7 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "gsap/all";
+import { motion } from "framer-motion";
 
 const Cursor = ({ children }: { children: React.ReactNode }) => {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -22,10 +23,10 @@ const Cursor = ({ children }: { children: React.ReactNode }) => {
       });
     }
 
-    // gsap.set(cursorRef, {
-    //   x: "50%",
-    //   y: "50%",
-    // });
+    gsap.set(cursorRef, {
+      x: 1000,
+      y: 700,
+    });
     gsap.from(cursorRef, {
       opacity: 0,
       duration: 1,
@@ -53,6 +54,7 @@ const Cursor = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="size-full">
       <div
+        // initial={{ x: 1000, y: 700 }}
         ref={cursorRef}
         // ${isMouseMoved === true ? "flex" : "hidden"}
         //left-1/2 top-1/2 z-30 h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform

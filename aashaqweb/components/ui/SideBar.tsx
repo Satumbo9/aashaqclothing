@@ -3,6 +3,7 @@ import React from "react";
 import { navLinks } from "../shared/data";
 // import { TbBrightnessHalf } from "react-icons/tb";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 import Link from "next/link";
 
@@ -18,13 +19,20 @@ const SideBar = () => {
           }`}
           href="/"
         >
-          AASHAQ
+          <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            AASHAQ
+          </motion.p>
         </Link>
         <ul className="flex flex-col gap-10 text-center">
           {navLinks.map((item) => (
-            <li key={item.id} className="">
+            <motion.li
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              key={item.id}
+              className=""
+            >
               <Link
-                className={`transition-color flex h-40 w-40 cursor-pointer flex-col items-center gap-5 border-b-2 border-[#1d1d1d] py-2 text-2xl duration-150 ease-out hover:scale-105 ${
+                className={`transition-color flex h-40 w-40 cursor-pointer flex-col items-center gap-5 border-b-2 border-[#1d1d1d] py-2 text-2xl ${
                   pathname === item.route
                     ? "text-red-500"
                     : "hover:text-red-200"
@@ -34,7 +42,7 @@ const SideBar = () => {
                 {item.icon}
                 <p className="">{item.text}</p>
               </Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </header>

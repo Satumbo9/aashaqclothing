@@ -90,7 +90,7 @@ export const Orders = () => {
             <p className="text-xl font-semibold">
               Order Now and Enjoy Hassle-Free Delivery Right to Your Door!
             </p>
-            <div className="flex gap-20 font-bold">
+            <div className="flex gap-20">
               {steps.map((item) => {
                 return (
                   <div
@@ -206,7 +206,7 @@ export const Orders = () => {
               animate={{ y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <p className="mt-10 text-9xl text-green-500">Thank</p>
+              <p className="mt-10 text-6xl text-green-500">Thank You</p>
             </motion.div>
           )}
         </FormData>
