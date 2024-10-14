@@ -12,6 +12,7 @@ import { nanoid } from "nanoid";
 import Image from "next/image";
 import shop1 from "../img/shop1.svg";
 import shop2 from "../img/shop2.svg";
+import { motion } from "framer-motion";
 
 //Schemas
 const OrderSchema = z.object({
@@ -40,17 +41,22 @@ export const Orders = () => {
   const steps = [
     {
       text: "Personal Info",
-      id: 1,
+      id: 0,
+      number: 1,
     },
     {
       text: "Address",
-      id: 2,
+      id: 1,
+      number: 2,
     },
     {
-      text: "Submmit",
-      id: 3,
+      text: "Submmited",
+      id: 2,
+      number: 3,
     },
   ];
+
+  console.log("Steps Length : ", steps.length);
 
   const {
     register,
@@ -64,31 +70,53 @@ export const Orders = () => {
 
   return (
     <div className="flex size-full flex-col items-center">
-      <div className="mt-[80px] flex items-center justify-center gap-6">
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.2 }}
+        className="mt-[80px] flex items-center justify-center gap-6"
+      >
         <FormData
           className="mt-[100px] flex h-[500px] w-[600px] flex-col items-center justify-center gap-10"
           name="name"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex flex-col items-center justify-center gap-10">
-            <MdLocalShipping className="h-20 w-20 text-white" />
+            <MdLocalShipping
+              className={`h-20 w-20 text-white ${
+                CurrentStep === steps.length - 1 ? "text-green-500" : null
+              }`}
+            />
             <p className="text-xl font-semibold">
               Order Now and Enjoy Hassle-Free Delivery Right to Your Door!
             </p>
             <div className="flex gap-20 font-bold">
-              {steps.map((item, index) => {
+              {steps.map((item) => {
                 return (
                   <div
+                    key={item.id}
                     className={`flex flex-col items-center justify-center gap-2`}
                   >
                     <p
-                      className={`text-4xl ${index === CurrentStep ? "flex h-10 w-10 items-center justify-center rounded-full bg-red-500 text-white" : null}`}
+                      className={`text-4xl ${
+                        item.id === CurrentStep && item.id === steps.length - 1
+                          ? "flex h-10 w-10 items-center justify-center rounded-full bg-green-500 text-white"
+                          : item.id === CurrentStep && item.id !== 2
+                            ? "flex h-10 w-10 items-center justify-center rounded-full bg-red-500"
+                            : null
+                      }`}
                       key={item.id}
                     >
-                      {item.id}
+                      {item.number}
                     </p>
                     <p
-                      className={`${index === CurrentStep ? "text-red-500" : null} `}
+                      className={`${
+                        item.id === CurrentStep && item.id === steps.length - 1
+                          ? "text-green-500"
+                          : item.id === CurrentStep && item.id !== 2
+                            ? "text-red-500"
+                            : null
+                      }`}
                     >
                       {item.text}
                     </p>
@@ -98,7 +126,7 @@ export const Orders = () => {
             </div>
           </div>
           {CurrentStep === 0 && (
-            <div className="flex flex-col items-center justify-center gap-6">
+            <motion.div className="flex flex-col items-center justify-center gap-6">
               <InputForm
                 placeholder="First Name"
                 label="Name"
@@ -129,11 +157,15 @@ export const Orders = () => {
                 className="h-20 w-[300px] bg-red-500 hover:bg-red-400"
                 label="Next Step"
               />
-            </div>
+            </motion.div>
           )}
 
           {CurrentStep === 1 && (
-            <div className="flex flex-col items-center justify-center gap-6">
+            <motion.div
+              initial={{ y: -10 }}
+              animate={{ y: 30 }}
+              className="flex flex-col items-center justify-center gap-6"
+            >
               <InputForm
                 placeholder="Address"
                 label="Address"
@@ -166,15 +198,19 @@ export const Orders = () => {
                   label="Submmit"
                 />
               </div>
-            </div>
+            </motion.div>
           )}
           {CurrentStep === 2 && (
-            <div>
-              <p className="mt-10 text-9xl">Thank</p>
-            </div>
+            <motion.div
+              initial={{ y: -50 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <p className="mt-10 text-9xl text-green-500">Thank</p>
+            </motion.div>
           )}
         </FormData>
-      </div>
+      </motion.div>
     </div>
   );
 };

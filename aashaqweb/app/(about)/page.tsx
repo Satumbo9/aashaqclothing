@@ -21,6 +21,7 @@ import { FaHeart, FaPeace } from "react-icons/fa6";
 import { BiSolidPlaneAlt } from "react-icons/bi";
 import { FaEarthAfrica } from "react-icons/fa6";
 import { CgGym } from "react-icons/cg";
+import { motion } from "framer-motion";
 
 const About = () => {
   const logoTextRef = useRef(null);
@@ -90,7 +91,13 @@ const About = () => {
       onMouseMove={(e) => MouseMovePlane(e)}
       className="max-h[100vh] relative flex h-screen w-screen max-w-[100%] flex-col items-center justify-center gap-10 bg-[--background-primary] text-white"
     >
-      <div ref={PlaneRef1} className="absolute h-screen w-screen max-sm:hidden">
+      {/* <motion.div
+        initial={{ y: -30 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1 }}
+        ref={PlaneRef1}
+        className="absolute h-screen w-screen max-sm:hidden"
+      >
         <div className="absolute right-[80%] top-[70%] flex h-40 w-40 flex-col items-center justify-center">
           Passion
           <CiShirt className="h-32 w-32 text-white" />
@@ -103,8 +110,14 @@ const About = () => {
           Peace
           <FaPeace className="h-full w-full text-yellow-500" />
         </div>
-      </div>
-      <div ref={PlaneRef2} className="absolute size-full max-sm:hidden">
+      </motion.div>
+      <motion.div
+        initial={{ x: -100 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 1 }}
+        ref={PlaneRef2}
+        className="absolute size-full max-sm:hidden"
+      >
         <div className="absolute right-[45%] top-[70%] flex h-32 w-32 flex-col items-center justify-center">
           Your favorite spot
           <BiSolidPlaneAlt className="h-full w-full text-sky-500" />
@@ -117,7 +130,7 @@ const About = () => {
           Health
           <CgGym className="h-full w-full text-pink-500" />
         </div>
-      </div>
+      </motion.div> */}
       <div className="z-10 flex w-2/4 flex-col items-center justify-center gap-1 text-center">
         <p className="z-10 text-9xl font-bold max-sm:text-xl">Aashaq</p>
       </div>
