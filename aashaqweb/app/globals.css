@@ -15,6 +15,10 @@
   }
 }
 
+.word p {
+  display: flex;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
