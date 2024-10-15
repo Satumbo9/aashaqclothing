@@ -8,10 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Buttom from "./Buttom";
 import InputForm from "./InputForm";
 import { MdLocalShipping } from "react-icons/md";
-import { nanoid } from "nanoid";
-import Image from "next/image";
-import shop1 from "../img/shop1.svg";
-import shop2 from "../img/shop2.svg";
 import { motion } from "framer-motion";
 
 //Schemas

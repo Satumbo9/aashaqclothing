@@ -9,6 +9,7 @@ import {
   FaYoutube,
   FaTiktok,
 } from "react-icons/fa";
+import { GiHanger } from "react-icons/gi";
 
 import { SiMinutemailer } from "react-icons/si";
 import { HiMiniShoppingCart } from "react-icons/hi2";
@@ -36,13 +37,13 @@ export const navLinks: navLinksSchema[] = [
     id: nanoid(),
     text: "Coleção",
     route: "/Home",
-    icon: <FaTshirt className={`text-[45px] max-sm:text-[30px]`} />,
+    icon: <GiHanger className={`text-[45px] max-sm:text-[30px]`} />,
   },
   {
     id: nanoid(),
     text: "Produtos",
     route: "/Product",
-    icon: <HiMiniShoppingCart className={`text-[45px] max-sm:text-[30px]`} />,
+    icon: <FaTshirt className={`text-[45px] max-sm:text-[30px]`} />,
   },
   {
     id: nanoid(),

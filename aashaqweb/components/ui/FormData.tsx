@@ -10,7 +10,7 @@ const FormData: React.FC<FromComponentProps> = ({
   ...props
 }) => {
   return (
-    <form name="Orders" {...props}>
+    <form name={name} {...props}>
       {children}
     </form>
   );
