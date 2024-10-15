@@ -82,68 +82,10 @@ const About = () => {
 
   return (
     <section
-      // onMouseMove={(e) => MouseMovePlane(e)}
+      onMouseMove={(e) => MouseMovePlane(e)}
       className="max-h[100vh] relative flex h-screen w-screen max-w-[100%] flex-col items-center justify-center gap-10 bg-[--background-primary] text-white"
     >
-      <div className="z-10 flex w-2/4 items-center justify-center gap-1 text-center">
-        <motion.p
-          // initial={{ x: -350, y: 0, scale: 5, opacity: 0 }}
-          // animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
-          // transition={{ duration: 1, type: "keyframes" }}
-          className="z-10 text-9xl font-bold max-sm:text-xl"
-        >
-          A
-        </motion.p>
-        <motion.p
-          // initial={{ x: -300, y: -300, opacity: 0 }}
-          // animate={{ x: 0, y: 0, opacity: 1 }}
-          // transition={{ duration: 1 }}
-          className="z-10 text-9xl font-bold max-sm:text-xl"
-        >
-          a
-        </motion.p>
-        <motion.p
-          // initial={{ x: -40, y: -400, opacity: 0 }}
-          // animate={{ x: 0, y: 0, opacity: 1 }}
-          // transition={{ duration: 0.5 }}
-          className="z-10 text-9xl font-bold text-red-500 max-sm:text-xl"
-        >
-          s
-        </motion.p>
-        <motion.p
-          // initial={{ x: 80, y: -300, opacity: 0 }}
-          // animate={{ x: 0, y: 0, opacity: 1 }}
-          // transition={{ duration: 1 }}
-          className="z-10 text-9xl font-bold max-sm:text-xl"
-        >
-          h
-        </motion.p>
-        <motion.p
-          // initial={{ x: -80, y: 300, opacity: 0 }}
-          // animate={{ x: 0, y: 0, opacity: 1 }}
-          // transition={{ duration: 1 }}
-          className="z-10 text-9xl font-bold max-sm:text-xl"
-        >
-          a
-        </motion.p>
-        <motion.p
-          // initial={{ x: 450, y: 100, scale: 5, opacity: 0 }}
-          // animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
-          // transition={{ duration: 1, type: "keyframes" }}
-          className="z-10 text-9xl font-bold max-sm:text-xl"
-        >
-          q
-        </motion.p>
-      </div>
-      <TextScramble />
-    </section>
-  );
-};
-
-export default About;
-
-{
-  /* <motion.div
+      {/* <motion.div
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 2 }}
@@ -182,5 +124,60 @@ export default About;
           Health
           <CgGym className="h-full w-full text-pink-500" />
         </div>
-      </motion.div> */
-}
+      </motion.div> */}
+      <div className="z-10 flex w-2/4 items-center justify-center gap-1 text-center">
+        <motion.p
+          initial={{ x: -350, y: 0, scale: 5, opacity: 0 }}
+          animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+          transition={{ duration: 1, type: "keyframes" }}
+          className="z-10 text-9xl font-bold max-sm:text-xl"
+        >
+          A
+        </motion.p>
+        <motion.p
+          initial={{ x: -300, y: -300, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="z-10 text-9xl font-bold max-sm:text-xl"
+        >
+          a
+        </motion.p>
+        <motion.p
+          initial={{ x: -40, y: -400, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="z-10 text-9xl font-bold text-red-500 max-sm:text-xl"
+        >
+          s
+        </motion.p>
+        <motion.p
+          initial={{ x: 80, y: -300, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="z-10 text-9xl font-bold max-sm:text-xl"
+        >
+          h
+        </motion.p>
+        <motion.p
+          initial={{ x: -80, y: 300, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="z-10 text-9xl font-bold max-sm:text-xl"
+        >
+          a
+        </motion.p>
+        <motion.p
+          initial={{ x: 450, y: 100, scale: 5, opacity: 0 }}
+          animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+          transition={{ duration: 1, type: "keyframes" }}
+          className="z-10 text-9xl font-bold max-sm:text-xl"
+        >
+          q
+        </motion.p>
+      </div>
+      <TextScramble />
+    </section>
+  );
+};
+
+export default About;
