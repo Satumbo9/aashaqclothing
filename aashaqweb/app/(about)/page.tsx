@@ -3,6 +3,7 @@
 import React, { MouseEvent, useEffect } from "react";
 import { aboutLinks } from "../../components/shared/data";
 import { useState, useRef } from "react";
+import TextScramble from "@/components/ui/TextScramble";
 import {
   Img1,
   Img2,
@@ -22,10 +23,12 @@ import { BiSolidPlaneAlt } from "react-icons/bi";
 import { FaEarthAfrica } from "react-icons/fa6";
 import { CgGym } from "react-icons/cg";
 import { motion } from "framer-motion";
-import TextFlipper from "@/components/ui/TextFlipper";
+import { ScrambleTextPlugin } from "gsap-trial/ScrambleTextPlugin";
+
+gsap.registerPlugin(ScrambleTextPlugin);
 
 const About = () => {
-  const logoTextRef = useRef(null);
+  const logoTextRef = useRef<HTMLParagraphElement>(null);
   const PlaneRef1 = useRef(null);
   const PlaneRef2 = useRef(null);
   let requestAnimationFrameId: any = null;
@@ -33,22 +36,12 @@ const About = () => {
   let yForce = 0;
   const easing = 0.08;
   const speed = 0.003;
-
-  useEffect(() => {
-    //GSAP for the mouse cirlcle mask effect
-    if (logoTextRef.current) {
-      //Spliting the Full Text
-      const splitText = new SplitType(logoTextRef.current, {
-        types: "words,chars",
-      });
-
-      gsap.to(splitText.chars, {});
-
-      return () => {
-        splitText.revert();
-      };
-    }
+  const TextRef = useRef(null);
+  const tl = gsap.timeline({
+    defaults: { text: "Hello", repeat: -1, duration: 5 },
   });
+
+  useEffect(() => {});
 
   //Animation for the icons aroud
   const MouseMovePlane = (e: MouseEvent) => {
@@ -88,11 +81,69 @@ const About = () => {
   };
 
   return (
-    <motion.section
-      onMouseMove={(e) => MouseMovePlane(e)}
+    <section
+      // onMouseMove={(e) => MouseMovePlane(e)}
       className="max-h[100vh] relative flex h-screen w-screen max-w-[100%] flex-col items-center justify-center gap-10 bg-[--background-primary] text-white"
     >
-      {/* <motion.div
+      <div className="z-10 flex w-2/4 items-center justify-center gap-1 text-center">
+        <motion.p
+          initial={{ x: -350, y: 0, scale: 5, opacity: 0 }}
+          animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+          transition={{ duration: 1, type: "keyframes" }}
+          className="z-10 text-9xl font-bold max-sm:text-xl"
+        >
+          A
+        </motion.p>
+        <motion.p
+          initial={{ x: -300, y: -300, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="z-10 text-9xl font-bold max-sm:text-xl"
+        >
+          a
+        </motion.p>
+        <motion.p
+          initial={{ x: -40, y: -400, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="z-10 text-9xl font-bold text-red-500 max-sm:text-xl"
+        >
+          s
+        </motion.p>
+        <motion.p
+          initial={{ x: 80, y: -300, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="z-10 text-9xl font-bold max-sm:text-xl"
+        >
+          h
+        </motion.p>
+        <motion.p
+          initial={{ x: -80, y: 300, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="z-10 text-9xl font-bold max-sm:text-xl"
+        >
+          a
+        </motion.p>
+        <motion.p
+          initial={{ x: 450, y: 100, scale: 5, opacity: 0 }}
+          animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+          transition={{ duration: 1, type: "keyframes" }}
+          className="z-10 text-9xl font-bold max-sm:text-xl"
+        >
+          q
+        </motion.p>
+      </div>
+      <TextScramble />
+    </section>
+  );
+};
+
+export default About;
+
+{
+  /* <motion.div
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 2 }}
@@ -131,71 +182,5 @@ const About = () => {
           Health
           <CgGym className="h-full w-full text-pink-500" />
         </div>
-      </motion.div> */}
-      <div className="z-10 flex w-2/4 items-center justify-center gap-1 text-center">
-        <motion.p
-          initial={{ x: -350, y: 0, scale: 5 }}
-          animate={{ x: 0, y: 0, scale: 1 }}
-          transition={{ duration: 0.3, type: "keyframes" }}
-          className="z-10 text-9xl font-bold max-sm:text-xl"
-        >
-          A
-        </motion.p>
-        <motion.p
-          initial={{ x: -300, y: -300 }}
-          animate={{ x: 0, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="z-10 text-9xl font-bold max-sm:text-xl"
-        >
-          a
-        </motion.p>
-        <motion.p
-          initial={{ x: -40, y: -400 }}
-          animate={{ x: 0, y: 0 }}
-          transition={{ duration: 0.1 }}
-          className="z-10 text-9xl font-bold text-red-500 max-sm:text-xl"
-        >
-          s
-        </motion.p>
-        <motion.p
-          initial={{ x: 80, y: -300 }}
-          animate={{ x: 0, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="z-10 text-9xl font-bold max-sm:text-xl"
-        >
-          h
-        </motion.p>
-        <motion.p
-          initial={{ x: -80, y: 300 }}
-          animate={{ x: 0, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="z-10 text-9xl font-bold max-sm:text-xl"
-        >
-          a
-        </motion.p>
-        <motion.p
-          initial={{ x: 450, y: 100, scale: 5 }}
-          animate={{ x: 0, y: 0, scale: 1 }}
-          transition={{ duration: 0.3, type: "keyframes" }}
-          className="z-10 text-9xl font-bold max-sm:text-xl"
-        >
-          q
-        </motion.p>
-      </div>
-
-      <div>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 5 }}
-          className="text-2xl text-red-500"
-        >
-          The Power of love
-        </motion.p>
-        {/* <TextFlipper /> */}
-      </div>
-    </motion.section>
-  );
-};
-
-export default About;
+      </motion.div> */
+}

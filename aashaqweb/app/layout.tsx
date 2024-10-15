@@ -37,12 +37,12 @@ export default function RootLayout({
         }}
         className={`${geistSans.variable} ${geistMono.variable} size-full antialiased xl:flex`}
       >
-        <Cursor>
-          <div className="relative flex size-full max-sm:flex-col">
-            <SideBar />
-            {children}
-          </div>
-        </Cursor>
+        {/* <Cursor> */}
+        <div className="relative flex size-full max-sm:flex-col">
+          <SideBar />
+          {children}
+        </div>
+        {/* </Cursor> */}
         {/* 
         <About /> */}
       </body>
