@@ -65,19 +65,10 @@ export const Orders = () => {
   };
 
   return (
-    <div className="flex size-full flex-col items-center">
-      <motion.div
-        initial={{ x: "100vw", opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.2 }}
-        className="mt-[80px] flex items-center justify-center gap-6"
-      >
-        <FormData
-          className="mt-[100px] flex h-[500px] w-[600px] flex-col items-center justify-center gap-10"
-          name="name"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className="flex flex-col items-center justify-center gap-10">
+    <section className="h-screen">
+      <div>
+        <FormData name="name" onSubmit={handleSubmit(onSubmit)}>
+          <div>
             <MdLocalShipping
               className={`h-20 w-20 text-white ${
                 CurrentStep === steps.length - 1 ? "text-green-500" : null
@@ -86,13 +77,10 @@ export const Orders = () => {
             <p className="text-xl font-semibold">
               Order Now and Enjoy Hassle-Free Delivery Right to Your Door!
             </p>
-            <div className="flex gap-20">
+            <div>
               {steps.map((item) => {
                 return (
-                  <div
-                    key={item.id}
-                    className={`flex flex-col items-center justify-center gap-2`}
-                  >
+                  <div key={item.id}>
                     <p
                       className={`text-4xl ${
                         item.id === CurrentStep && item.id === steps.length - 1
@@ -121,93 +109,92 @@ export const Orders = () => {
               })}
             </div>
           </div>
-          {CurrentStep === 0 && (
-            <motion.div className="flex flex-col items-center justify-center gap-6">
-              <InputForm
-                placeholder="First Name"
-                label="Name"
-                id="name"
-                type="text"
-              />
-              <InputForm
-                placeholder="Last Name"
-                label="Name"
-                id="name"
-                type="text"
-              />
-              <InputForm
-                placeholder="Email"
-                label="Email"
-                id="email"
-                type="text"
-              />
-              <InputForm
-                placeholder="+908-000-000"
-                label="Phone"
-                id="phone"
-                type="text"
-              />
-              <Buttom
-                type="button"
-                onClick={() => setCurrentStep((prev) => prev + 1)}
-                className="h-20 w-[300px] bg-red-500 hover:bg-red-400"
-                label="Next Step"
-              />
-            </motion.div>
-          )}
-
-          {CurrentStep === 1 && (
-            <motion.div
-              initial={{ y: -10 }}
-              animate={{ y: 30 }}
-              className="flex flex-col items-center justify-center gap-6"
-            >
-              <InputForm
-                placeholder="Address"
-                label="Address"
-                id="address"
-                type="text"
-              />
-              <InputForm
-                placeholder="Zip Code"
-                label="Zip Code"
-                id="zipcode"
-                type="text"
-              />
-              <div className="flex gap-5">
-                <Buttom
-                  type="button"
-                  onClick={() => setCurrentStep((prev) => prev - 1)}
-                  className="h-20 w-[300px] bg-red-500 hover:bg-red-400"
-                  label="Back"
+          <div
+          // className="flex w-full items-center justify-center"
+          >
+            {CurrentStep === 0 && (
+              <div>
+                <InputForm
+                  placeholder="First Name"
+                  label="Name"
+                  id="name"
+                  type="text"
+                />
+                <InputForm
+                  placeholder="Last Name"
+                  label="Name"
+                  id="name"
+                  type="text"
+                />
+                <InputForm
+                  placeholder="Email"
+                  label="Email"
+                  id="email"
+                  type="text"
+                />
+                <InputForm
+                  placeholder="+908-000-000"
+                  label="Phone"
+                  id="phone"
+                  type="text"
                 />
                 <Buttom
                   type="button"
-                  onClick={() => {
-                    setTimeout(() => {
-                      console.log("Submmited");
-                      setCurrentStep(0);
-                    }, 1000);
-                    setCurrentStep((prev) => prev + 1);
-                  }}
-                  className="h-20 w-[300px] bg-green-500 hover:bg-green-400"
-                  label="Submmit"
+                  onClick={() => setCurrentStep((prev) => prev + 1)}
+                  className="h-20 w-[300px] bg-red-500 hover:bg-red-400 max-sm:h-20 max-sm:w-40"
+                  label="Next Step"
                 />
               </div>
-            </motion.div>
-          )}
-          {CurrentStep === 2 && (
-            <motion.div
-              initial={{ y: -50 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <p className="mt-10 text-6xl text-green-500">Thank You</p>
-            </motion.div>
-          )}
+            )}
+            {CurrentStep === 1 && (
+              <div>
+                <InputForm
+                  placeholder="Address"
+                  label="Address"
+                  id="address"
+                  type="text"
+                />
+                <InputForm
+                  placeholder="Zip Code"
+                  label="Zip Code"
+                  id="zipcode"
+                  type="text"
+                />
+                <div className="flex gap-5">
+                  <Buttom
+                    type="button"
+                    onClick={() => setCurrentStep((prev) => prev - 1)}
+                    className="h-20 w-[300px] bg-red-500 hover:bg-red-400 max-sm:h-20 max-sm:w-40"
+                    label="Back"
+                  />
+                  <Buttom
+                    type="button"
+                    onClick={() => {
+                      setTimeout(() => {
+                        console.log("Submmited");
+                        setCurrentStep(0);
+                      }, 1000);
+                      setCurrentStep((prev) => prev + 1);
+                    }}
+                    className="h-20 w-[300px] bg-green-500 hover:bg-green-400 max-sm:h-20 max-sm:w-40"
+                    label="Submmit"
+                  />
+                </div>
+              </div>
+            )}
+            {CurrentStep === 2 && (
+              <motion.div
+                initial={{ y: -50 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <p className="mt-10 text-6xl text-green-500">Thank You</p>
+              </motion.div>
+            )}
+          </div>
         </FormData>
-      </motion.div>
-    </div>
+      </div>
+    </section>
   );
 };
 
@@ -228,11 +215,11 @@ export const NewsLetter = () => {
     console.log("News Letter Submitted", data);
   };
   return (
-    <div className="">
+    <section className="">
       <FormData name="name" onSubmit={handleSubmit(onSubmit)}>
         <p className="text-9xl"> I am NewsLetter</p>
       </FormData>
-    </div>
+    </section>
   );
 };
 

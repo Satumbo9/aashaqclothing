@@ -31,10 +31,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        style={{
-          animationDelay: `${0.05}`,
-          animationDuration: "1s",
-        }}
         className={`${geistSans.variable} ${geistMono.variable} size-full antialiased xl:flex`}
       >
         {/* <Cursor> */}

@@ -6,7 +6,7 @@ import { HiMiniShoppingCart } from "react-icons/hi2";
 
 const NavDetails = () => {
   return (
-    <header className="flex h-screen w-[150px] flex-col items-center gap-10 border-l-2 border-[#1d1d1d] bg-[--background-primary] px-5 text-white max-sm:hidden">
+    <header className="z-20 flex h-screen w-[150px] flex-col items-center gap-10 border-l-2 border-[#1d1d1d] bg-[--background-primary] px-5 text-white max-sm:hidden">
       <div className="flex flex-col items-center justify-center">
         {" "}
         <HiMiniShoppingCart
